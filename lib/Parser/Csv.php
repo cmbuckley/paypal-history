@@ -37,16 +37,29 @@ class Csv extends AbstractParser {
                 );
 
                 if (isset($this->expectedConversion)) {
-                    if ($row['Currency'] == $this->currency) {
-                        $this->data[$this->expectedConversion]['rate'] = $data['amount'] / $this->data[$this->expectedConversion]['amount'];
+                    if ($row['Type'] != 'Currency Conversion') {
+                        if ($row['Currency'] == $this->currency) {
+                            $this->data[$this->expectedConversion]['rate'] = - $data['amount'] / $this->data[$this->expectedConversion]['amount'];
+                        } else {
+                            // refund in a foreign currency
+                            $data['rate'] = - $this->data[$this->expectedConversion]['amount'] / $data['amount'];
+                        }
+
+                        $this->data[] = $data;
                         unset($this->expectedConversion);
                     }
                 } else {
                     $key = count($this->data);
-                    $this->data[$key] = $data;
 
-                    if ($row['Currency'] != $this->currency) {
-                        $this->expectedConversion = $key;
+                    // not seen the foreign currency yet; must have been a refund
+                    if ($row['Type'] == 'Currency Conversion') {
+                        $this->expectedConversion = $key - 1;
+                    } else {
+                        $this->data[$key] = $data;
+
+                        if ($row['Currency'] != $this->currency) {
+                            $this->expectedConversion = $key;
+                        }
                     }
                 }
             }
