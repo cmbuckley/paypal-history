@@ -1,0 +1,19 @@
+<OFX>
+  <BANKMSGSRSV1>
+    <STMTTRNRS>
+      <STMTRS>
+        <CURDEF>GBP</CURDEF>
+        <BANKACCTFROM>
+          <BANKID></BANKID>
+          <ACCTID>PayPal</ACCTID>
+          <ACCTTYPE></ACCTTYPE>
+        </BANKACCTFROM>
+        <BANKTRANLIST></BANKTRANLIST>
+        <LEDGERBAL>
+          <BALAMT></BALAMT>
+          <DTASOF></DTASOF>
+        </LEDGERBAL>
+      </STMTRS>
+    </STMTTRNRS>
+  </BANKMSGSRSV1>
+</OFX>
