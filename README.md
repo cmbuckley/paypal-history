@@ -9,14 +9,14 @@ management application.
 As well as being limited to a 2-year export, the PayPal history downloads are
 incomplete at best. The table below shows the features available in each format:
 
-               | CSV | TXT | QIF | IIF | PDF
----------------|:---:|:---:|:---:|:---:|:---:
-Currency       |  ✓  |  ✓  |     |     |  ✓
-Payee          |  ✓  |  ✓  |     |  ✓  |  ✓
-Timezone       |  ✓  |  ✓  |     |     |
-Transaction ID |     |     |     |     |  ✓
-Memo           |     |     |     |  ✓  |
-eBay Fee       |     |     |  ✓  |  ✓  |  ✓
+|                | CSV | TXT | QIF | IIF | PDF |
+|----------------|:---:|:---:|:---:|:---:|:---:|
+| Currency       |  ✓  |  ✓  |     |     |  ✓  |
+| Payee          |  ✓  |  ✓  |     |  ✓  |  ✓  |
+| Timezone       |  ✓  |  ✓  |     |     |     |
+| Transaction ID |     |     |     |     |  ✓  |
+| Memo           |     |     |     |  ✓  |     |
+| eBay Fee       |     |     |  ✓  |  ✓  |  ✓  |
 
 Other things to note:
 
@@ -25,6 +25,28 @@ Other things to note:
 * IIF exports transactions for all currencies, but does not list the currency in the
     output. Amounts are in the currency of the transaction, making the format useless.
 * PDF is limited by file size, but this is unlikely to be an issue for personal users.
+
+## Foreign Currencies
+
+A typical transaction in anything other than your default currency may look something
+like this:
+
+| Details            | Currency | Amount |
+|--------------------|----------|-------:|
+| European Widgets   | EUR      | -10.00 |
+| From British Pound | EUR      |  10.00 |
+| To Euro            | GBP      |  -8.85 |
+| Credit Card        | GBP      |   8.85 |
+
+In this example, the purchase in Euros is redeemed by a credit card payment in Sterling,
+but there are 4 entries to illustrate this. By contrast, the converter calculates the
+exchange rate used for the transaction and includes it in the output. The converted
+output would therefore look like this:
+
+| Details            | Currency | Amount | Rate  |
+|--------------------|----------|-------:|------:|
+| European Widgets   | EUR      | -10.00 | 0.885 |
+| Credit Card        | GBP      |   8.85 | 1.000 |
 
 ## Output Formats
 
