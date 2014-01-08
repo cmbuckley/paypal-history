@@ -10,7 +10,7 @@ class CsvTest extends \PHPUnit_Framework_TestCase {
      * @dataProvider providerLoadFile
      */
     public function testLoadFile($csv, $expected) {
-        $fixture = new Csv;
+        $fixture = new Csv(array('currency' => 'GBP'));
         $fixture->loadFile($csv);
 
         $this->assertEquals($expected, $fixture->getData());

@@ -6,11 +6,6 @@ class Ofx extends AbstractExporter {
     protected $document;
     protected $listElement;
 
-    protected $timezone = 'Europe/London';
-    protected $currency = 'GBP';
-    protected $account = 'PayPal';
-    protected $ignoreTransfers = true;
-
     public function getDocument() {
         if (!$this->document) {
             $this->document = $this->initDocument();
@@ -26,8 +21,8 @@ class Ofx extends AbstractExporter {
         $document->load(__DIR__ . '/../../etc/template.ofx');
 
         $xpath = new \DOMXPath($document);
-        $xpath->query('//CURDEF')->item(0)->nodeValue = $this->currency;
-        $xpath->query('//ACCTID')->item(0)->nodeValue = $this->account;
+        $xpath->query('//CURDEF')->item(0)->nodeValue = $this->getOption('currency');
+        $xpath->query('//ACCTID')->item(0)->nodeValue = $this->getOption('accountName');
 
         return $document;
     }
@@ -62,44 +57,35 @@ class Ofx extends AbstractExporter {
     }
 
     protected function getDate(\DateTime $date) {
-        return $date->setTimezone(new \DateTimeZone($this->timezone))->format('Ymd');
+        $timezone = new \DateTimeZone($this->getOption('timezone'));
+        return $date->setTimezone($timezone)->format($this->getOption('dateFormat'));
     }
 
     protected function getAmount($amount) {
-        return sprintf('%01.2f', $amount / 100);
+        return sprintf($this->getOption('amountFormat'), $amount / 100);
     }
 
-    protected function sendHeaders() {
-        header('Content-Type: text/xml; charset=utf-8');
-        header(vsprintf('Content-Disposition: attachment; filename="paypal-%s-%s-%s.ofx"', array_map('date', array('Y', 'm', 'd'))));
-    }
+    protected function processRecord(array $record) {
+        $transaction = array(
+            'DTPOSTED' => $this->getDate($record['date']),
+            'TRNAMT'   => $this->getAmount($record['amount']),
+            'FITID'    => $record['id'],
+            'NAME'     => $record['name'],
+            'CURRENCY' => array(
+                'CURRATE' => $record['rate'],
+                'CURSYM'  => $record['currency'],
+            ),
+        );
 
-    public function getOutput() {
-        foreach ($this->parser->getData() as $record) {
-            if ($this->ignoreTransfers && in_array($record['name'], array('Bank Account', 'Credit Card'))) {
-                continue;
-            }
-
-            $transaction = array(
-                'DTPOSTED' => $this->getDate($record['date']),
-                'TRNAMT'   => $this->getAmount($record['amount']),
-                'FITID'    => $record['id'],
-                'NAME'     => $record['name'],
-                'CURRENCY' => array(
-                    'CURRATE' => $record['rate'],
-                    'CURSYM'  => $record['currency'],
-                ),
-            );
-
-            // don't need to set if default currency
-            if ($transaction['CURRENCY']['CURRATE'] === 1 && $transaction['CURRENCY']['CURSYM'] === $this->currency) {
-                unset($transaction['CURRENCY']);
-            }
-
-            $this->addTransaction($transaction);
+        // don't need to set if default currency
+        if ($transaction['CURRENCY']['CURRATE'] === 1 && $transaction['CURRENCY']['CURSYM'] === $this->getOption('currency')) {
+            unset($transaction['CURRENCY']);
         }
 
-        $this->sendHeaders();
+        $this->addTransaction($transaction);
+    }
+
+    protected function finishOutput() {
         return $this->getDocument()->saveXML(null, LIBXML_NOEMPTYTAG);
     }
 }

@@ -8,8 +8,6 @@ class Csv extends AbstractParser {
     protected $fields;
     protected $expectedConversion;
 
-    protected $currency = 'GBP';
-
     protected function getDate(array $row) {
         $dateString = "{$row['Date']} {$row['Time']} {$row['Time Zone']}";
         $date = \DateTime::createFromFormat('d/m/Y H:i:s e', $dateString);
@@ -20,6 +18,7 @@ class Csv extends AbstractParser {
 
     public function loadFile($file) {
         $file = new CsvFile($file);
+        $defaultCurrency = $this->getOption('currency');
 
         foreach ($file as $row) {
             if ($this->fields === null) {
@@ -38,7 +37,7 @@ class Csv extends AbstractParser {
 
                 if (isset($this->expectedConversion)) {
                     if ($row['Type'] != 'Currency Conversion') {
-                        if ($row['Currency'] == $this->currency) {
+                        if ($row['Currency'] == $defaultCurrency) {
                             $this->data[$this->expectedConversion]['rate'] = - $data['amount'] / $this->data[$this->expectedConversion]['amount'];
                         } else {
                             // refund in a foreign currency
@@ -57,7 +56,7 @@ class Csv extends AbstractParser {
                     } else {
                         $this->data[$key] = $data;
 
-                        if ($row['Currency'] != $this->currency) {
+                        if ($row['Currency'] != $defaultCurrency) {
                             $this->expectedConversion = $key;
                         }
                     }

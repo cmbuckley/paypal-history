@@ -2,16 +2,14 @@
 
 namespace Starsquare\PayPal\Parser;
 
-abstract class AbstractParser {
-    protected $options = array();
+use Starsquare\PayPal\Options;
+
+abstract class AbstractParser extends Options {
+
     protected $data = array();
 
     public function __construct(array $options = array()) {
         $this->setOptions($options);
-    }
-
-    public function setOptions(array $options) {
-        $this->options = array_replace_recursive($this->options, $options);
     }
 
     public function getData() {

@@ -7,8 +7,17 @@ use Starsquare\Test\PayPal\Parser\Mock;
 
 class OfxTest extends \PHPUnit_Framework_TestCase {
 
+    protected $defaultOptions = array(
+        'timezone' => 'UTC',
+        'dateFormat' => 'Ymd',
+        'skipBankPayments' => true,
+        'currency' => 'GBP',
+        'accountName' => 'PayPal',
+        'amountFormat' => '%01.2f',
+    );
+
     public function testGetDocument() {
-        $fixture = new Ofx(new Mock);
+        $fixture = new Ofx(new Mock, $this->defaultOptions);
         $document = $fixture->getDocument();
 
         $this->assertInstanceOf('DOMDocument', $document);
@@ -21,7 +30,7 @@ class OfxTest extends \PHPUnit_Framework_TestCase {
     public function testGetOutput($data, $expectedFile) {
         $mock = new Mock;
         $mock->setData($data);
-        $fixture = new Ofx($mock);
+        $fixture = new Ofx($mock, $this->defaultOptions);
 
         $this->assertStringEqualsFile($expectedFile, $fixture->getOutput());
     }

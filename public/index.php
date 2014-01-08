@@ -14,9 +14,6 @@ if (isset($_FILES['file'])) {
 <html>
 <body>
     <form method="post" enctype="multipart/form-data">
-        <input type="hidden" name="inputFormat" value="csv" />
-        <input type="hidden" name="outputFormat" value="ofx" />
-
         <label for="file">File:</label>
         <input type="file" name="file" id="file" />
 

@@ -5,20 +5,24 @@ namespace Starsquare\PayPal;
 use Starsquare\PayPal\Parser\AbstractParser as Parser;
 use Starsquare\PayPal\Exporter\AbstractExporter as Exporter;
 
-class Converter {
-    protected $options = array();
+class Converter extends Options {
     protected $file;
     protected $parser;
     protected $exporter;
 
     public function __construct($file, array $options) {
         $this->file = $file;
-        $this->options = $options;
+        $this->initOptions($options);
+    }
+
+    protected function initOptions(array $options) {
+        $this->setOptions(parse_ini_file(__DIR__ . '/../etc/options.ini'));
+        $this->setOptions($options);
     }
 
     public function getParser() {
         if ($this->parser === null) {
-            $this->parser = Parser::create($this->options['inputFormat'], $this->file);
+            $this->parser = Parser::create($this->getOption('parser'), $this->file);
         }
 
         return $this->parser;
@@ -26,14 +30,24 @@ class Converter {
 
     public function getExporter() {
         if ($this->exporter === null) {
-            $this->exporter = Exporter::create($this->options['outputFormat'], $this->getParser());
+            $this->exporter = Exporter::create($this->getOption('exporter'), $this->getParser());
         }
 
         return $this->exporter;
     }
 
+    public function sendHeaders() {
+        header('Content-Type: ' . $this->getExporter()->getContentType());
+        header(sprintf(
+            'Content-Disposition: attachment; filename="paypal-%s.%s"',
+            date($this->getOption('dateFormat')),
+            $this->getOption('exporter')
+        ));
+    }
+
     public function __toString() {
         try {
+            $this->sendHeaders();
             return (string) $this->getExporter();
         } catch (\Exception $ex) {
             return (string) $ex;
