@@ -7,6 +7,7 @@ use Keboola\Csv\CsvFile;
 class Csv extends AbstractParser {
     protected $fields;
     protected $expectedConversion;
+    protected $ignoreTypes = array('Authorisation', 'Order');
 
     protected function getDate(array $row) {
         $dateString = "{$row['Date']} {$row['Time']} {$row['Time Zone']}";
@@ -61,7 +62,7 @@ class Csv extends AbstractParser {
                         // not seen the foreign currency yet; must have been a refund
                         $this->expectedConversion = $key - 1;
 
-                    } elseif ($data['type'] != 'Authorisation') {
+                    } elseif (!in_array($data['type'], $this->ignoreTypes)) {
                         $this->data[$key] = $data;
 
                         if ($row['Currency'] != $defaultCurrency) {
