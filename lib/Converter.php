@@ -36,13 +36,23 @@ class Converter extends Options {
         return $this->exporter;
     }
 
+    public function getHeaders() {
+        return array(
+            'Content-Type'        => $this->getExporter()->getContentType(),
+            'Content-Disposition' => sprintf(
+                'attachment; filename="paypal-%s.%s"',
+                date($this->getConverterOption('dateFormat')),
+                $this->getConverterOption('exporter')
+            ),
+        );
+    }
+
     public function sendHeaders() {
-        header('Content-Type: ' . $this->getExporter()->getContentType());
-        header(sprintf(
-            'Content-Disposition: attachment; filename="paypal-%s.%s"',
-            date($this->getOption('dateFormat')),
-            $this->getOption('exporter')
-        ));
+        if ($this->getConverterOption('sendHeaders')) {
+            foreach ($this->getHeaders() as $field => $value) {
+                header("$field: $value");
+            }
+        }
     }
 
     public function __toString() {

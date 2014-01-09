@@ -58,7 +58,11 @@ abstract class AbstractExporter extends Options {
     }
 
     public function __toString() {
-        return $this->getOutput();
+        try {
+            return $this->getOutput();
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
     }
 
     public static function create($type, AbstractParser $parser, array $options = array()) {
