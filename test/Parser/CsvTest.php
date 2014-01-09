@@ -1,6 +1,6 @@
 <?php
 
-namespace Starsquare\PayPal\Test\Parser;
+namespace Starsquare\Test\PayPal\Parser;
 
 use Starsquare\PayPal\Parser\Csv;
 

@@ -100,6 +100,6 @@ class Ofx extends AbstractExporter {
         }
 
         $this->sendHeaders();
-        return $this->getDocument()->saveXML();
+        return $this->getDocument()->saveXML(null, LIBXML_NOEMPTYTAG);
     }
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<OFX>
+  <BANKMSGSRSV1>
+    <STMTTRNRS>
+      <STMTRS>
+        <CURDEF>GBP</CURDEF>
+        <BANKACCTFROM>
+          <BANKID></BANKID>
+          <ACCTID>PayPal</ACCTID>
+          <ACCTTYPE></ACCTTYPE>
+        </BANKACCTFROM>
+        <BANKTRANLIST>
+          <STMTTRN>
+            <DTPOSTED>20100215</DTPOSTED>
+            <TRNAMT>12.87</TRNAMT>
+            <FITID></FITID>
+            <NAME>Badwolf Corp</NAME>
+            <CURRENCY>
+              <CURRATE>0.65501165501166</CURRATE>
+              <CURSYM>USD</CURSYM>
+            </CURRENCY>
+          </STMTTRN>
+        </BANKTRANLIST>
+        <LEDGERBAL>
+          <BALAMT></BALAMT>
+          <DTASOF></DTASOF>
+        </LEDGERBAL>
+      </STMTRS>
+    </STMTTRNRS>
+  </BANKMSGSRSV1>
+</OFX>

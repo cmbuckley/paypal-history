@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<OFX>
+  <BANKMSGSRSV1>
+    <STMTTRNRS>
+      <STMTRS>
+        <CURDEF>GBP</CURDEF>
+        <BANKACCTFROM>
+          <BANKID></BANKID>
+          <ACCTID>PayPal</ACCTID>
+          <ACCTTYPE></ACCTTYPE>
+        </BANKACCTFROM>
+        <BANKTRANLIST>
+          <STMTTRN>
+            <DTPOSTED>20031111</DTPOSTED>
+            <TRNAMT>-28.62</TRNAMT>
+            <FITID></FITID>
+            <NAME>Foo Company</NAME>
+          </STMTTRN>
+          <STMTTRN>
+            <DTPOSTED>20091022</DTPOSTED>
+            <TRNAMT>-14.99</TRNAMT>
+            <FITID></FITID>
+            <NAME>ACME PLC</NAME>
+          </STMTTRN>
+        </BANKTRANLIST>
+        <LEDGERBAL>
+          <BALAMT></BALAMT>
+          <DTASOF></DTASOF>
+        </LEDGERBAL>
+      </STMTRS>
+    </STMTTRNRS>
+  </BANKMSGSRSV1>
+</OFX>
