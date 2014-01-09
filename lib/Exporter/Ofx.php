@@ -56,15 +56,6 @@ class Ofx extends AbstractExporter {
         $this->getListElement()->appendChild($transaction);
     }
 
-    protected function getDate(\DateTime $date) {
-        $timezone = new \DateTimeZone($this->getOption('timezone'));
-        return $date->setTimezone($timezone)->format($this->getOption('dateFormat'));
-    }
-
-    protected function getAmount($amount) {
-        return sprintf($this->getOption('amountFormat'), $amount / 100);
-    }
-
     protected function processRecord(array $record) {
         $transaction = array(
             'DTPOSTED' => $this->getDate($record['date']),
@@ -78,7 +69,7 @@ class Ofx extends AbstractExporter {
         );
 
         // don't need to set if default currency
-        if ($transaction['CURRENCY']['CURRATE'] === 1 && $transaction['CURRENCY']['CURSYM'] === $this->getOption('currency')) {
+        if ($record['rate'] === 1 && $record['currency'] === $this->getOption('currency')) {
             unset($transaction['CURRENCY']);
         }
 

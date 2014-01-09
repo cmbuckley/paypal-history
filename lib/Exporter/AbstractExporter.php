@@ -27,6 +27,15 @@ abstract class AbstractExporter extends Options {
         return false;
     }
 
+    protected function getDate(\DateTime $date) {
+        $timezone = new \DateTimeZone($this->getOption('timezone'));
+        return $date->setTimezone($timezone)->format($this->getOption('dateFormat'));
+    }
+
+    protected function getAmount($amount) {
+        return sprintf($this->getOption('amountFormat'), $amount / 100);
+    }
+
     protected function startOutput() {
     }
 
