@@ -57,10 +57,11 @@ class Csv extends AbstractParser {
                 } else {
                     $key = count($this->data);
 
-                    // not seen the foreign currency yet; must have been a refund
-                    if ($row['Type'] == 'Currency Conversion') {
+                    if ($data['type'] == 'Currency Conversion') {
+                        // not seen the foreign currency yet; must have been a refund
                         $this->expectedConversion = $key - 1;
-                    } else {
+
+                    } elseif ($data['type'] != 'Authorisation') {
                         $this->data[$key] = $data;
 
                         if ($row['Currency'] != $defaultCurrency) {
