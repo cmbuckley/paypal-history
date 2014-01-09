@@ -15,8 +15,8 @@ abstract class AbstractExporter extends Options {
         $this->setOptions($options);
     }
 
-    protected function getContentType() {
-        return $this->getOption('contentType') . '; charset=' . $this->getOption('charset');
+    public function getContentType() {
+        return $this->getOption('contentType') . '; charset=' . $this->getOption('encoding');
     }
 
     protected function shouldSkip(array $record) {
