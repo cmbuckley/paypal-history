@@ -35,4 +35,13 @@
         'amount' => 885,
         'id' => '',
     ),
+    array(
+        'date' => new \DateTime('2001-01-01 08:08:08', new \DateTimeZone('UTC')),
+        'name' => 'Euro Paid From Balance',
+        'type' => 'PayPal Express Checkout Payment Sent',
+        'currency' => 'EUR',
+        'rate' => 2890 / 3500,
+        'amount' => -3500,
+        'id' => '',
+    ),
 );

@@ -7,3 +7,6 @@ Date, Time, Time Zone, Name, Type, Status, Currency, Amount, Receipt ID, Balance
 "08/02/2013","15:35:58","GMT","From British Pound","Currency Conversion","Completed","EUR","10.00","","10.00",
 "08/02/2013","15:35:58","GMT","To Euro","Currency Conversion","Completed","GBP","-8.85","","0.00",
 "08/02/2013","15:35:58","GMT","Credit Card","Charge from Credit Card","Completed","GBP","8.85","","8.85",
+"01/01/2001","08:08:08","GMT","Euro Paid From Balance","PayPal Express Checkout Payment Sent","Completed","EUR","-35.00","","0.00",
+"01/01/2001","08:08:08","GMT","From British Pound","Currency Conversion","Completed","EUR","35.00","","35.00",
+"01/01/2001","08:08:08","GMT","To Euro","Currency Conversion","Completed","GBP","-28.90","","0.00",

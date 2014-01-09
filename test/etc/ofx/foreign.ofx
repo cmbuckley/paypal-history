@@ -30,6 +30,16 @@
               <CURSYM>EUR</CURSYM>
             </CURRENCY>
           </STMTTRN>
+          <STMTTRN>
+            <DTPOSTED>20010101</DTPOSTED>
+            <TRNAMT>-35.00</TRNAMT>
+            <FITID></FITID>
+            <NAME>Euro Paid From Balance</NAME>
+            <CURRENCY>
+              <CURRATE>0.82571428571429</CURRATE>
+              <CURSYM>EUR</CURSYM>
+            </CURRENCY>
+          </STMTTRN>
         </BANKTRANLIST>
         <LEDGERBAL>
           <BALAMT></BALAMT>
