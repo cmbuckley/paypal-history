@@ -1,4 +1,4 @@
-# PayPal History [![Build Status](https://travis-ci.org/starsquare/paypal-history.png)](https://travis-ci.org/starsquare/paypal-history)
+# PayPal History [![Build Status](https://travis-ci.org/cmbuckley/paypal-history.png)](https://travis-ci.org/cmbuckley/paypal-history)
 
 The PayPal History Converter parses any of PayPal’s downloadable history formats
 and outputs the data in many other standard formats for use in your finance
