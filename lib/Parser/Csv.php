@@ -32,7 +32,7 @@ class Csv extends AbstractParser {
                     'type'     => $row['Type'],
                     'currency' => $row['Currency'],
                     'rate'     => 1,
-                    'amount'   => (int) bcmul($row['Amount'], '100'),
+                    'amount'   => (int) bcmul(str_replace(',', '', $row['Amount']), '100'),
                     'id'       => $row['Receipt ID'],
                 );
 
