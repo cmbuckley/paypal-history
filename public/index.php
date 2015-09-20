@@ -19,6 +19,12 @@ if (isset($_FILES['file'])) {
         <label for="file">File:</label>
         <input type="file" name="file" id="file" />
 
+        <label for="exporter">Output:</label>
+        <select name="converter[exporter]" id="exporter">
+            <option value="csv">CSV</option>
+            <option value="ofx">OFX</option>
+        </select>
+
         <input type="submit" />
     </form>
 </body>
