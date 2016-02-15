@@ -20,8 +20,14 @@ class CsvTest extends \PHPUnit_Framework_TestCase {
         $tests = array();
 
         foreach (glob('test/etc/csv/*.csv') as $file) {
-            $expected = str_replace('csv', 'php', $file);
-            $tests[basename($file)] = array($file, include $expected);
+            $phpFile = str_replace('csv', 'php', $file);
+            $expected = include $phpFile;
+
+            if (!$expected) {
+                throw new \Exception("Missing file $phpFile");
+            }
+
+            $tests[basename($file)] = array($file, $expected);
         }
 
         return $tests;
