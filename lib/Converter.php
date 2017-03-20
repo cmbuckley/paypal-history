@@ -104,8 +104,9 @@ class Converter extends Options {
 
     public function __toString() {
         try {
+            $output = (string) $this->getExporter();
             $this->sendHeaders();
-            return (string) $this->getExporter();
+            return $output;
         } catch (\Exception $ex) {
             return (string) $ex;
         }
