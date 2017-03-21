@@ -1,0 +1,6 @@
+Date, Time, Time Zone, Name, Type, Status, Currency, Amount, Receipt ID, Balance, 
+"07/03/2017","12:54:40","GMT","From British pound","Currency Conversion","Completed","USD","12.90","","12.90",
+"07/03/2017","12:54:40","GMT","To US dollar","Currency Conversion","Completed","GBP","-10.93","","0.00",
+"07/03/2017","12:54:40","GMT","Bank Account","Add Money from a Bank Account","Completed","GBP","10.93","","10.93",
+"07/03/2017","12:54:40","GMT","Some Store","Mobile Express Checkout Payment Sent","Completed","USD","-12.90","","0.00",
+"06/03/2017","22:01:12","GMT","Some Store","Authorisation","Completed","USD","-12.90","","0.00",
