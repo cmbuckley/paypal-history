@@ -6,8 +6,8 @@ use Keboola\Csv\CsvFile;
 
 class Csv extends AbstractParser {
     protected $fields;
-    protected $expectedConversion;
-    protected $expectedHold;
+    protected $conversion = array();
+    protected $hold;
     protected $ignoreTypes = array('Authorisation', 'Order');
 
     protected function getDate(array $row) {
@@ -26,6 +26,7 @@ class Csv extends AbstractParser {
             if ($this->fields === null) {
                 $this->fields = array_map('trim', $row);
             } else {
+                $key = count($this->data);
                 $row = array_combine($this->fields, $row);
                 $data = array(
                     'date'     => $this->getDate($row),
@@ -37,46 +38,48 @@ class Csv extends AbstractParser {
                     'id'       => $row['Receipt ID'],
                 );
 
-                if (isset($this->expectedConversion)) {
-                    // is this the conversion row for the debit?
-                    if ($data['type'] == 'Currency Conversion' &&
-                        $this->data[$this->expectedConversion]['currency'] != $data['currency'] &&
-                        $data['currency'] == $defaultCurrency
-                    ) {
-                        $this->data[$this->expectedConversion]['rate'] = $data['amount'] / $this->data[$this->expectedConversion]['amount'];
-                        unset($this->expectedConversion);
-                    }
+                // are we looking at a currency conversion?
+                if ($data['type'] == 'Currency Conversion') {
+                    $conversionType = substr($data['name'], 0, strpos($data['name'], ' '));
 
-                    // is this the refund row?
-                    if ($data['type'] != 'Currency Conversion' &&
-                        $this->data[$this->expectedConversion]['currency'] != $data['currency'] &&
-                        $data['currency'] != $defaultCurrency
-                    ) {
-                        $data['rate'] = - $this->data[$this->expectedConversion]['amount'] / $data['amount'];
-                        $this->data[] = $data;
-                        unset($this->expectedConversion);
-                    }
-                } elseif (isset($this->expectedHold)) {
-                    if ($data['type'] == 'Temporary Hold' && $data['amount'] == -$this->expectedHold) {
-                        unset($this->expectedHold);
-                    }
-                } else {
-                    $key = count($this->data);
+                    // grab some data to use later
+                    if ($conversionType === 'From') {
+                        $this->conversion['amount'] = $data['amount'];
+                        $this->conversion['currency'] = $data['currency'];
 
-                    if ($data['type'] == 'Currency Conversion') {
-                        // not seen the foreign currency yet; must have been a refund
-                        $this->expectedConversion = $key - 1;
-
-                    } elseif ($data['type'] == 'Temporary Hold') {
-                        $this->expectedHold = $data['amount'];
-
-                    } elseif (!in_array($data['type'], $this->ignoreTypes)) {
-                        $this->data[$key] = $data;
-
-                        if ($row['Currency'] != $defaultCurrency) {
-                            $this->expectedConversion = $key;
+                    } else if ($conversionType === 'To') {
+                        // rate depends which line was our local currency
+                        if ($data['currency'] === $defaultCurrency) {
+                            $this->conversion['rate'] = - $data['amount'] / $this->conversion['amount'];
+                        } else {
+                            $this->conversion['rate'] = - $this->conversion['amount'] / $data['amount'];
+                            $this->conversion['currency'] = $data['currency'];
                         }
                     }
+                } else if (isset($this->hold)) {
+                    if ($data['type'] == 'Temporary Hold' && $data['amount'] == -$this->hold) {
+                        unset($this->hold);
+                    }
+                } else {
+                    if ($data['type'] == 'Temporary Hold') {
+                        $this->hold = $data['amount'];
+
+                    } else if (!in_array($data['type'], $this->ignoreTypes)) {
+                        $this->data[$key] = $data;
+                    }
+
+                    if ($data['currency'] !== $defaultCurrency) {
+                        $this->conversion['key'] = $key;
+                    }
+                }
+
+                // do we have a valid conversion that we are ready to apply?
+                if (
+                    isset($this->conversion['rate'], $this->conversion['key']) &&
+                    $this->data[$this->conversion['key']]['currency'] === $this->conversion['currency']
+                ) {
+                    $this->data[$this->conversion['key']]['rate'] = $this->conversion['rate'];
+                    $this->conversion = array();
                 }
             }
         }
