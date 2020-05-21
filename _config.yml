@@ -4,7 +4,12 @@ description: Convert PayPal history into more banking formats.
 url: https://cmbuckley.co.uk
 baseurl: /paypal-history
 
+repository: cmbuckley/paypal-history
 remote_theme: "cmbuckley/cmbuckley.github.io"
+
+plugins:
+  - jekyll-github-metadata
+  - jekyll-remote-theme
 
 markdown: kramdown
 highlighter: rouge
