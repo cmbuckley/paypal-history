@@ -9,7 +9,7 @@ class ConverterTest extends TestCase {
 
     protected $converter;
 
-    protected function setUp() {
+    protected function setUp(): void {
         $this->converter = new Converter('test/etc/csv/basic.csv', array(
             'converter' => array(
                 'parser'     => 'csv',
