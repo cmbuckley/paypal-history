@@ -4,8 +4,9 @@ namespace Starsquare\Test\PayPal\Exporter;
 
 use Starsquare\PayPal\Exporter\Csv;
 use Starsquare\Test\PayPal\Parser\Mock;
+use PHPUnit\Framework\TestCase;
 
-class CsvTest extends \PHPUnit_Framework_TestCase {
+class CsvTest extends TestCase {
 
     protected $defaultOptions = array(
         'timezone' => 'UTC',

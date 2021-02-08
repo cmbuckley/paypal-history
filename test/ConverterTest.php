@@ -3,8 +3,9 @@
 namespace Starsquare\Test\PayPal;
 
 use Starsquare\PayPal\Converter;
+use PHPUnit\Framework\TestCase;
 
-class ConverterTest extends \PHPUnit_Framework_TestCase {
+class ConverterTest extends TestCase {
 
     protected $converter;
 
