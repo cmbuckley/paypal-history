@@ -6,7 +6,7 @@ The PayPal History Converter parses any of PayPal’s downloadable history forma
 and outputs the data in many other standard formats for use in your finance
 management application.
 
-[![Build Status](https://api.travis-ci.org/cmbuckley/paypal-history.svg)](https://travis-ci.org/cmbuckley/paypal-history)
+[![Build Status](https://travis-ci.com/cmbuckley/paypal-history.svg)](https://travis-ci.com/cmbuckley/paypal-history)
 
 ## Compatibility
 
