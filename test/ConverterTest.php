@@ -3,12 +3,13 @@
 namespace Starsquare\Test\PayPal;
 
 use Starsquare\PayPal\Converter;
+use PHPUnit\Framework\TestCase;
 
-class ConverterTest extends \PHPUnit_Framework_TestCase {
+class ConverterTest extends TestCase {
 
     protected $converter;
 
-    protected function setUp() {
+    protected function setUp(): void {
         $this->converter = new Converter('test/etc/csv/basic.csv', array(
             'converter' => array(
                 'parser'     => 'csv',

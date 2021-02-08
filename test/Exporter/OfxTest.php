@@ -4,8 +4,9 @@ namespace Starsquare\Test\PayPal\Exporter;
 
 use Starsquare\PayPal\Exporter\Ofx;
 use Starsquare\Test\PayPal\Parser\Mock;
+use PHPUnit\Framework\TestCase;
 
-class OfxTest extends \PHPUnit_Framework_TestCase {
+class OfxTest extends TestCase {
 
     protected $defaultOptions = array(
         'timezone' => 'UTC',

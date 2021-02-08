@@ -3,8 +3,9 @@
 namespace Starsquare\Test\PayPal\Parser;
 
 use Starsquare\PayPal\Parser\Csv;
+use PHPUnit\Framework\TestCase;
 
-class CsvTest extends \PHPUnit_Framework_TestCase {
+class CsvTest extends TestCase {
 
     /**
      * @dataProvider providerLoadFile
