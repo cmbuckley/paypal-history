@@ -1,7 +1,7 @@
 ---
 layout: showcase
 title: PayPal History
-travis: true
+build: build.yml
 ---
 The PayPal History Converter parses any of PayPal’s downloadable history formats
 and outputs the data in many other standard formats for use in your finance
