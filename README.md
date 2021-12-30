@@ -1,6 +1,6 @@
 # PayPal History
 
-[![Build Status](https://travis-ci.com/cmbuckley/paypal-history.svg)](https://travis-ci.com/cmbuckley/paypal-history)
+[![Build Status](https://github.com/cmbuckley/paypal-history/actions/workflows/build.yml/badge.svg)](https://github.com/cmbuckley/paypal-history/actions/workflows/build.yml)
 
 The PayPal History Converter parses any of PayPal’s downloadable history formats
 and outputs the data in many other standard formats for use in your finance
