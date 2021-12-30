@@ -1,26 +1,26 @@
 {
-    "name": "starsquare/paypal-history",
+    "name": "cmbuckley/paypal-history",
     "description": "Convert PayPal history CSV to QIF",
     "version": "0.1",
     "type": "library",
     "keywords": ["paypal", "history", "converter", "csv", "qif"],
-    "homepage": "http://starsquare.github.io/paypal-history/",
+    "homepage": "https://cmbuckley.co.uk/paypal-history/",
     "license": "MIT",
     "authors": [
         {
             "name": "Chris Buckley",
             "email": "chris@cmbuckley.co.uk",
-            "homepage": "http://cmbuckley.co.uk"
+            "homepage": "https://cmbuckley.co.uk"
         }
     ],
     "support": {
-        "email": "paypal-history@starsquare.co.uk",
-        "issues": "https://github.com/starsquare/paypal-history/issues",
-        "source": "https://github.com/starsquare/paypal-history"
+        "email": "paypal-history@cmbuckley.co.uk",
+        "issues": "https://github.com/cmbuckley/paypal-history/issues",
+        "source": "https://github.com/cmbuckley/paypal-history"
     },
     "require": {
-        "php" : ">=7.1.0",
-        "keboola/csv": "1.*"
+        "php" : "^8",
+        "keboola/csv": "^1"
     },
     "autoload": {
         "psr-4": {
@@ -28,6 +28,6 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": ">=7"
+        "phpunit/phpunit": "^9"
     }
 }
