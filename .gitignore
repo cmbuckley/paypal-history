@@ -2,3 +2,6 @@
 composer.lock
 composer.phar
 vendor
+
+# Ignore phpunit files
+.phpunit.result.cache
