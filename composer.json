@@ -21,7 +21,7 @@
     "require": {
         "php": "^8",
         "ext-bcmath": "*",
-        "keboola/csv": "^1"
+        "league/csv": "^9.8"
     },
     "autoload": {
         "psr-4": {
