@@ -19,7 +19,8 @@
         "source": "https://github.com/cmbuckley/paypal-history"
     },
     "require": {
-        "php" : "^8",
+        "php": "^8",
+        "ext-bcmath": "*",
         "keboola/csv": "^1"
     },
     "autoload": {
