@@ -11,7 +11,7 @@ class Csv extends AbstractParser {
     protected $ignoreTypes = array('Authorisation', 'Order');
 
     protected function getDate(array $row) {
-        $dateString = "{$row['Date']} {$row['Time']} {$row['Time Zone']}";
+        $dateString = "{$row['Date']} {$row['Time']} {$row['Time zone']}";
         $date = \DateTime::createFromFormat('d/m/Y H:i:s e', $dateString);
         $date->setTimezone(new \DateTimeZone('UTC'));
 
@@ -25,7 +25,6 @@ class Csv extends AbstractParser {
 
         foreach ($reader->getRecords() as $row) {
             $key = count($this->data);
-            $row = array_combine(array_map('trim', array_keys($row)), $row);
             $data = array(
                 'date'     => $this->getDate($row),
                 'name'     => $row['Name'],
@@ -37,7 +36,7 @@ class Csv extends AbstractParser {
             );
 
             // are we looking at a currency conversion?
-            if ($data['type'] == 'Currency Conversion') {
+            if ($data['type'] == 'General Currency Conversion') {
                 $conversionType = substr($data['name'], 0, strpos($data['name'], ' '));
 
                 // grab some data to use later

@@ -9,12 +9,13 @@ use PHPUnit\Framework\TestCase;
 class CsvTest extends TestCase {
 
     protected $defaultOptions = array(
-        'timezone' => 'UTC',
-        'dateFormat' => 'Y-m-d',
+        'timezone' => 'Europe/London',
+        'dateFormat' => 'Y-m-d H:i',
         'skipBankPayments' => true,
         'currency' => 'GBP',
         'amountFormat' => '%01.2f',
-        'fields' => array('date', 'name', 'amount', 'currency', 'rate'),
+        'accountName' => 'PayPal',
+        'fields' => array('account', 'date', 'name', 'amount', 'currency', 'rate'),
         'separator' => ',',
     );
 
