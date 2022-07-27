@@ -1,2 +1,2 @@
-Date,Name,Amount,Currency,Rate
-2010-02-15,"Badwolf Corp",12.87,USD,0.65501165501166
+Account,Date,Name,Amount,Currency,Rate
+PayPal,"2010-02-15 07:43","Badwolf Corp",12.87,USD,0.65501165501166

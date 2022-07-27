@@ -1,2 +1,2 @@
-Date,Name,Amount,Currency,Rate
-2017-03-07,"Some Store",-12.90,USD,0.84728682170543
+Account,Date,Name,Amount,Currency,Rate
+PayPal,"2017-03-07 12:54","Some Store",-12.90,USD,0.84728682170543

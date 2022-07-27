@@ -18,8 +18,9 @@ class Csv extends AbstractExporter {
     }
 
     protected function processRecord(array $record) {
-        $record['date'] = $this->getDate($record['date']);
-        $record['amount'] = $this->getAmount($record['amount']);
+        $record['date']    = $this->getDate($record['date']);
+        $record['amount']  = $this->getAmount($record['amount']);
+        $record['account'] = $this->getOption('accountName');
 
         // only keep the requested fields
         $record = array_intersect_key($record, $this->fieldNames);

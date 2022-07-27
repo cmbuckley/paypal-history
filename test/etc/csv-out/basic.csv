@@ -1,3 +1,3 @@
-Date,Name,Amount,Currency,Rate
-2003-11-11,"Foo Company",-28.62,GBP,1
-2009-10-22,"ACME PLC",-14.99,GBP,1
+Account,Date,Name,Amount,Currency,Rate
+PayPal,"2003-11-11 10:12","Foo Company",-28.62,GBP,1
+PayPal,"2009-10-22 11:35","ACME PLC",-14.99,GBP,1
