@@ -1,2 +1,2 @@
-Date, Time, Time Zone, Name, Type, Status, Currency, Amount, Receipt ID, Balance,
-"26/03/2015","22:13:06","GMT","Expensive","Payment Sent","Completed","GBP","-9,000.00","","0.00",
+"Date","Time","Time zone","Name","Type","Status","Currency","Amount","Receipt ID","Balance"
+"26/03/2015","22:13:06","GMT","Expensive","Payment Sent","Completed","GBP","-9,000.00","","0.00"
