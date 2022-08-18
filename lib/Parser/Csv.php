@@ -37,14 +37,11 @@ class Csv extends AbstractParser {
 
             // are we looking at a currency conversion?
             if ($data['type'] == 'General Currency Conversion') {
-                $conversionType = substr($data['name'], 0, strpos($data['name'], ' '));
-
                 // grab some data to use later
-                if ($conversionType === 'From') {
+                if (!isset($this->conversion['amount'])) {
                     $this->conversion['amount'] = $data['amount'];
                     $this->conversion['currency'] = $data['currency'];
-
-                } else if ($conversionType === 'To') {
+                } else {
                     // rate depends which line was our local currency
                     if ($data['currency'] === $defaultCurrency) {
                         $this->conversion['rate'] = - $data['amount'] / $this->conversion['amount'];
