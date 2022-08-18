@@ -1,8 +1,8 @@
 <?php return array(
     array(
         'date' => new \DateTime('2010-02-15 07:43:29', new \DateTimeZone('UTC')),
-        'name' => 'Credit Card',
-        'type' => 'Credit to Credit Card',
+        'name' => '',
+        'type' => 'General Credit Card Withdrawal',
         'currency' => 'GBP',
         'rate' => 1,
         'amount' => -843,
