@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<OFX>
+  <BANKMSGSRSV1>
+    <STMTTRNRS>
+      <STMTRS>
+        <CURDEF>GBP</CURDEF>
+        <BANKACCTFROM>
+          <BANKID></BANKID>
+          <ACCTID>PayPal</ACCTID>
+          <ACCTTYPE></ACCTTYPE>
+        </BANKACCTFROM>
+        <BANKTRANLIST>
+          <STMTTRN>
+            <DTPOSTED>20220614</DTPOSTED>
+            <TRNAMT>-63.58</TRNAMT>
+            <FITID></FITID>
+            <NAME>Test Place</NAME>
+            <CURRENCY>
+              <CURRATE>0.86049072035231</CURRATE>
+              <CURSYM>USD</CURSYM>
+            </CURRENCY>
+          </STMTTRN>
+        </BANKTRANLIST>
+        <LEDGERBAL>
+          <BALAMT></BALAMT>
+          <DTASOF></DTASOF>
+        </LEDGERBAL>
+      </STMTRS>
+    </STMTTRNRS>
+  </BANKMSGSRSV1>
+</OFX>
