@@ -8,7 +8,11 @@ use Starsquare\PayPal\Parser\AbstractParser;
 abstract class AbstractExporter extends Options {
 
     // names of transactions from the connected bank account
-    protected $bankPayments = array('Bank Account', 'Credit Card');
+    protected $bankPayments = array(
+        'General Credit Card Withdrawal',
+        'General Credit Card Deposit',
+        'Bank deposit to PayPal account',
+    );
 
     public function __construct(AbstractParser $parser, array $options = array()) {
         $this->parser = $parser;
@@ -20,7 +24,7 @@ abstract class AbstractExporter extends Options {
     }
 
     protected function shouldSkip(array $record) {
-        if ($this->getOption('skipBankPayments') && in_array($record['name'], $this->bankPayments)) {
+        if ($this->getOption('skipBankPayments') && in_array($record['type'], $this->bankPayments)) {
             return true;
         }
 

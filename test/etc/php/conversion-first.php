@@ -1,8 +1,8 @@
 <?php return array(
     array(
         'date' => new \DateTime('2017-03-07 12:54:40', new \DateTimeZone('UTC')),
-        'name' => 'Bank Account',
-        'type' => 'Add Money from a Bank Account',
+        'name' => '',
+        'type' => 'Bank deposit to PayPal account',
         'currency' => 'GBP',
         'rate' => 1,
         'amount' => 1093,

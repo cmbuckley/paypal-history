@@ -10,8 +10,8 @@
     ),
     array(
         'date' => new \DateTime('2003-11-11 10:12:25', new \DateTimeZone('UTC')),
-        'name' => 'Credit Card',
-        'type' => 'Charge from Credit Card',
+        'name' => '',
+        'type' => 'General Credit Card Deposit',
         'currency' => 'GBP',
         'rate' => 1,
         'amount' => 2862,
@@ -28,8 +28,8 @@
     ),
     array(
         'date' => new \DateTime('2009-10-22 10:35:33', new \DateTimeZone('UTC')),
-        'name' => 'Credit Card',
-        'type' => 'Charge from Credit Card',
+        'name' => '',
+        'type' => 'General Credit Card Deposit',
         'currency' => 'GBP',
         'rate' => 1,
         'amount' => 1499,
