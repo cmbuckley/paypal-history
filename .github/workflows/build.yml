@@ -17,7 +17,7 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_extensions: bcmath
-      - uses: php-actions/phpunit@v3
+      - uses: php-actions/phpunit@v6
         with:
           php_version: ${{ matrix.php-versions }}
           php_extensions: bcmath
