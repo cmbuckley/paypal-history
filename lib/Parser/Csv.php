@@ -20,10 +20,26 @@ class Csv extends AbstractParser {
 
     public function loadFile($file) {
         $reader = Reader::createFromPath($file);
-        $reader->setHeaderOffset(0);
+        $origHeader = $reader->fetchOne();
+        $header = $headerCount = [];
+
+        // append number to duplicate field names
+        foreach ($origHeader as $field) {
+            if  (isset($headerCount[$field])) {
+                $field .= ' ' . $headerCount[$field]++;
+            } else {
+                $headerCount[$field] = 1;
+            }
+
+            $header[] = $field;
+        }
+
         $defaultCurrency = $this->getOption('currency');
 
-        foreach ($reader->getRecords() as $row) {
+        foreach ($reader->getRecords($header) as $row) {
+            // ignore the header record
+            if ($row['Date'] == 'Date') { continue; }
+
             $key = count($this->data);
             $data = array(
                 'date'     => $this->getDate($row),
