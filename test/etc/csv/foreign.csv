@@ -1,4 +1,4 @@
-"Date","Time","Time zone","Name","Type","Status","Currency","Amount","Receipt ID","Balance"
+"Date","Time","Time zone","Name","Type","Status","Currency","Net","Receipt ID","Balance"
 "17/09/2013","10:15:52","BST","Americorp","PayPal Express Checkout Payment Sent","Completed","USD","-21.95","","0.00"
 "17/09/2013","10:15:52","BST","","General Currency Conversion","Completed","USD","21.95","","21.95"
 "17/09/2013","10:15:52","BST","","General Currency Conversion","Completed","GBP","-14.22","","0.00"

@@ -1,4 +1,4 @@
-"Date","Time","Time zone","Name","Type","Status","Currency","Amount","Receipt ID","Balance"
+"Date","Time","Time zone","Name","Type","Status","Currency","Net","Receipt ID","Balance"
 "15/02/2010","07:43:29","GMT","","General Credit Card Withdrawal","Completed","GBP","-8.43","","0.00"
 "15/02/2010","07:43:29","GMT","","General Currency Conversion","Completed","GBP","8.43","","8.43"
 "15/02/2010","07:43:29","GMT","","General Currency Conversion","Completed","USD","-12.87","","0.00"

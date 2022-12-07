@@ -1,4 +1,4 @@
-"Date","Time","Time zone","Name","Type","Status","Currency","Amount","Receipt ID","Balance"
+"Date","Time","Time zone","Name","Type","Status","Currency","Net","Receipt ID","Balance"
 "11/11/2003","10:12:25","GMT","Foo Company","Subscription Payment Sent","Completed","GBP","-28.62","","0.00"
 "11/11/2003","10:12:25","GMT","","General Credit Card Deposit","Completed","GBP","28.62","","28.62"
 "22/10/2009","11:35:33","BST","ACME PLC","PayPal Express Checkout Payment Sent","Completed","GBP","-14.99","","0.00"

@@ -1,4 +1,4 @@
-"Date","Time","Time zone","Name","Type","Status","Currency","Amount","Receipt ID","Balance"
+"Date","Time","Time zone","Name","Type","Status","Currency","Net","Receipt ID","Balance"
 "07/03/2017","12:54:40","GMT","","General Currency Conversion","Completed","USD","12.90","","12.90"
 "07/03/2017","12:54:40","GMT","","General Currency Conversion","Completed","GBP","-10.93","","0.00"
 "07/03/2017","12:54:40","GMT","","Bank deposit to PayPal account","Completed","GBP","10.93","","10.93"

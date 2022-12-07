@@ -8,7 +8,7 @@ class Csv extends AbstractParser {
     protected $fields;
     protected $conversion = array();
     protected $hold;
-    protected $ignoreTypes = array('Authorisation', 'Order');
+    protected $ignoreTypes = array('General Authorisation', 'Order', 'Shopping Cart Item');
 
     protected function getDate(array $row) {
         $dateString = "{$row['Date']} {$row['Time']} {$row['Time zone']}";
@@ -47,7 +47,7 @@ class Csv extends AbstractParser {
                 'type'     => $row['Type'],
                 'currency' => $row['Currency'],
                 'rate'     => 1,
-                'amount'   => (int) bcmul(str_replace(',', '', $row['Amount']), '100'),
+                'amount'   => (int) bcmul(str_replace(',', '', $row['Net']), '100'),
                 'id'       => $row['Receipt ID'],
             );
 
