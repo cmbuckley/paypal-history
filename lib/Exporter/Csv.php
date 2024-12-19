@@ -14,7 +14,7 @@ class Csv extends AbstractExporter {
         $this->fieldNames = array_flip($fields);
 
         // headings
-        fputcsv($this->handle, array_map('ucwords', $fields));
+        fputcsv($this->handle, array_map('ucwords', $fields), escape: '\\');
     }
 
     protected function processRecord(array $record) {
@@ -24,7 +24,7 @@ class Csv extends AbstractExporter {
 
         // only keep the requested fields
         $record = array_intersect_key($record, $this->fieldNames);
-        fputcsv($this->handle, array_replace($this->fieldNames, $record));
+        fputcsv($this->handle, array_replace($this->fieldNames, $record), escape: '\\');
     }
 
     protected function finishOutput() {
