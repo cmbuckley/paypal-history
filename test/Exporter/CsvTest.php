@@ -30,7 +30,7 @@ class CsvTest extends TestCase {
         $this->assertStringEqualsFile($expectedFile, $fixture->getOutput());
     }
 
-    public function providerGetOutput() {
+    public static function providerGetOutput() {
         $tests = array();
 
         foreach (glob('test/etc/php/*.php') as $file) {
