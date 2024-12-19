@@ -18,7 +18,7 @@ class CsvTest extends TestCase {
         $this->assertEquals(include $php, $fixture->getData());
     }
 
-    public function providerLoadFile() {
+    public static function providerLoadFile() {
         $tests = array();
 
         foreach (glob('test/etc/csv/*.csv') as $file) {

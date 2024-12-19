@@ -6,6 +6,7 @@ use Starsquare\PayPal\Options;
 use Starsquare\PayPal\Parser\AbstractParser;
 
 abstract class AbstractExporter extends Options {
+    protected $parser;
 
     // names of transactions from the connected bank account
     protected $bankPayments = array(
