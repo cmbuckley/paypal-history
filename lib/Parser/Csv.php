@@ -19,7 +19,7 @@ class Csv extends AbstractParser {
     }
 
     public function loadFile($file) {
-        $reader = Reader::createFromPath($file);
+        $reader = Reader::from($file);
         $reader->setHeaderOffset(0);
         $defaultCurrency = $this->getOption('currency');
 
